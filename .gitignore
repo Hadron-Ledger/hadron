@@ -98,3 +98,9 @@ venv_*
 
 # mypy
 .mypy_cache/
+
+/test_project
+directory.db
+genesis.json
+geth/
+keystore/
