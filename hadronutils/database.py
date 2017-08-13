@@ -15,17 +15,22 @@ create_contracts = '''
                 instance blob
                 )'''
 select_from = 'SELECT * FROM {table} WHERE {name} {address}'.format
-log = logging.getLogger(__file__)
-connection = sqlite3.connect(DB_FILE)
-cursor = cursor = connection.cursor()
 
-# graceful initialization tries to create new tables as a test to see if this is a new DB or not
+def connect_db():
+    log = logging.getLogger(__file__)
+    connection = sqlite3.connect(DB_FILE)
+    cursor = connection.cursor()
+
+# graceful initialization tries to create new tables as a test to see if this is a new DB or not    
 def init_dbs(sqls):
+    log = logging.getLogger(__file__)
+    connection = sqlite3.connect(DB_FILE)
+    cursor = connection.cursor()
     for s in sqls:
         try:
             cursor.execute(s)
         except Exception as e:
-            if 'already exists' in e.message:
+            if 'already exists' in str(e):
                 pass
             else:
                 raise

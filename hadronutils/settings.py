@@ -1,18 +1,11 @@
 import os
-WORKING_DIR = '../test_project'
-cdir = os.path.dirname(__file__)
-WORKING_DIR = os.path.abspath(os.path.join(cdir, WORKING_DIR))
-DB_FILE = os.path.abspath(os.path.join(WORKING_DIR, 'directory.db'))
-try:
-    os.mkdir(WORKING_DIR)
-except OSError as e:
-    pass
 
-def change_dir(dir):
+WORKING_DIR = '.'
+DB_FILE = os.path.abspath(os.path.join(WORKING_DIR, 'directory.db'))
+
+def create_working_dir(dir):
 	try:
 		WORKING_DIR = dir
-		cdir = os.path.dirname(__file__)
-		WORKING_DIR = os.path.abspath(os.path.join(cdir, WORKING_DIR))
 		DB_FILE = os.path.abspath(os.path.join(WORKING_DIR, 'directory.db'))
 		try:
 		    os.mkdir(WORKING_DIR)
