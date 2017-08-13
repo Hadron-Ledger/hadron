@@ -26,6 +26,24 @@ GENESIS_BLOCK_TEMPLATE = {
 	'timestamp'  : '0x00'
 }
 
+GENESIS_BLOCK_DEFAULT = {
+	'config': {
+	    'chainId': 0,
+	    'homesteadBlock': 0,
+	    'eip155Block': 0,
+	    'eip158Block': 0
+		},
+	'alloc'      : {},
+	'coinbase'   : '0x0000000000000000000000000000000000000000',
+	'difficulty' : '0x40000',
+	'extraData'  : '',
+	'gasLimit'   : '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
+	'nonce'      : '0x0000000000000000',
+	'mixhash'    : '0x0000000000000000000000000000000000000000000000000000000000000000',
+	'parentHash' : '0x0000000000000000000000000000000000000000000000000000000000000000',
+	'timestamp'  : '0x00'
+}
+
 INT16 = 18446744073709551615
 
 def check_if_in_project():
@@ -82,7 +100,8 @@ def run_generator():
 	if not check_if_in_project():
 		# create a new chain!
 		print('=== Project Name ===')
-		project_dir = input('Name your new Hadron project: ')
+		project_dir = input('Name your new Hadron project or press enter to initialize here: ')
+		project_dir = '.' if project_dir == '' else project_dir
 
 		while True:
 			print('\n=== Blockchain Settings ===')
