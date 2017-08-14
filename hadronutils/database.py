@@ -17,8 +17,8 @@ create_contracts = '''
                 )'''
 select_from = 'SELECT * FROM {table} WHERE {name} {address}'.format
 
-connection = None
-cursor = None
+# connection = None
+# cursor = None
 
 def connect_db():
     log = logging.getLogger(__file__)
