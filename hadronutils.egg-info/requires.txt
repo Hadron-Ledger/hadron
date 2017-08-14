@@ -5,3 +5,4 @@ web3
 jinja2
 py-solc
 pytest
+py-solc
