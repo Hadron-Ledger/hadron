@@ -31,16 +31,14 @@ def init_dbs(sqls):
     connection = sqlite3.connect(DB_FILE)
     cursor = connection.cursor()
     for s in sqls:
-        with suppress(sqlite3.OperationalError):
-            cursor.execute(s)
-<<<<<<< HEAD
+        try:
+            with suppress(sqlite3.OperationalError):
+                cursor.execute(s)
         except Exception as e:
             if 'already exists' in str(e):
                 pass
             else:
                 raise
-=======
->>>>>>> bb665199285739ccaf7e25f5ec3083a1c093bf79
 
 def exec_sql(sql):
     try:
