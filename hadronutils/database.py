@@ -1,6 +1,7 @@
 import sqlite3
 import os, logging
 from hadronutils.settings import DB_FILE
+from contextlib import suppress
 create_accounts = 'CREATE TABLE accounts (name text primary key, address text)'
 
 create_contracts = '''
@@ -28,7 +29,8 @@ def init_dbs(sqls):
     cursor = connection.cursor()
     for s in sqls:
         try:
-            cursor.execute(s)
+            with suppress(sqlite3.OperationalError):
+                cursor.execute(s)
         except Exception as e:
             if 'already exists' in str(e):
                 pass
