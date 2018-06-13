@@ -110,7 +110,7 @@ class Contract(Contract):
 			self.address = self.web3.eth.sendTransaction(transaction={'data' : '0x' + self.bytecode, 'from': self.defaultAccount, 'gaslimit': 30000})
 			self.instance = self.web3.eth.contract(self.address)
 		else:
-			raise Exepction('unable to unlock account')
+			raise Exception('unable to unlock account')
 		#update the deployed and address to the db and an instance for pulling and interacting with the contract again
 		return update_contract(json.dumps(self.address), self.method_identifiers, self.name)
 
