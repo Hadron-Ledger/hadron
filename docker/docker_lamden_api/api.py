@@ -39,7 +39,7 @@ class WebApp(object):
             endpoint, values = adapter.match()
             method = getattr(self, 'endpoint_{}'.format(endpoint))
             return method(adapter, request, **values)
-        except HTTPException, e:
+        except HTTPException as e:
             return e
 
     url_map = Map([])
